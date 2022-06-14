@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App pText='oi caralho'/>
   </React.StrictMode>
 );
 
