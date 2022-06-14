@@ -1,3 +1,4 @@
-export default function createName():string {
-  return 'oi'
+export interface Categories {
+  id:string,
+  name:string
 }

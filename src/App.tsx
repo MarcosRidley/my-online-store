@@ -1,14 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header'
+import * as api from './services/api';
+import {Categories} from './interfaces'
 import './App.css';
 
-interface AppProps {
-pText:string
-}
 
-function App({pText}:AppProps) {
+
+
+function App(): JSX.Element {
+  const [categories, setCategories] = React.useState<Categories[] | undefined>()
+  useEffect(() => {
+    api.getCategories().then((result) => setCategories(result));
+  }, [])
   return (
-    <p>{pText}</p>
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>
   );
 }
 

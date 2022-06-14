@@ -1,0 +1,14 @@
+header {
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  background-color: #FFF159;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1em 2em
+}
+#logo {
+}
+#promo {
+  width: 30%
+}
