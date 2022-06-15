@@ -1,6 +1,6 @@
-import {Categories} from '../interfaces'
+import {Category} from '../interfaces'
 
-export async function getCategories(): Promise<Categories[]> {
+export async function getCategories(): Promise<Category[]> {
   try {
     const endPoint = 'https://api.mercadolibre.com/sites/MLB/categories';
     const result = await fetch(endPoint);
