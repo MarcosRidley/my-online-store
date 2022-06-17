@@ -21,30 +21,55 @@ export default function ProductCardModal({
 	const hideModal = () => {
 		setIsModalOpen(false);
 	};
+
+	const hasInstallmentPlan = (item:any):String => {
+		if('installments' in item) {
+			if(item.installments !== null) {
+				let returnString = `${item.installments.quantity} vezes de ${BRLformatter(item.installments.amount)}`;
+				const complementaryString = item.installments.rate === 0 ? ", sem juros!" : "."
+				return returnString + complementaryString
+			}
+		} return ""
+	}
 	return (
 		<>
-			<button onClick={showModal}>Detalhes</button>
+			<button onClick={showModal} className="product-card-button">
+				Detalhes
+			</button>
 			<Modal show={isModalOpen} onHide={hideModal}>
 				<Modal.Header>
-					<Modal.Title>Detalhes do item</Modal.Title>
-					<button onClick={hideModal}>X</button>
+					<Modal.Title style={{ justifyContent: 'space-evenly' }}>
+						Detalhes do item
+					</Modal.Title>
+					<button onClick={hideModal} className="product-card-button close-btn">
+						X
+					</button>
 				</Modal.Header>
-				<Modal.Body>
+				<Modal.Body
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+					}}
+				>
 					<h5 className="modal-name">{item.title}</h5>
-          <img src={item.thumbnail} alt={item.title}/>
+					<img
+						src={item.thumbnail}
+						alt={item.title}
+						width="150em"
+						style={{ padding: '1em' }}
+					/>
 					<p>
-						{BRLformatter(item.price)} em {item.installments.quantity || null} vezes de {BRLformatter(item.installments.amount)}
-						{item.installments.rate === 0
-							? ', sem juros!'
-							: '.'}
+						{BRLformatter(item.price)} em {hasInstallmentPlan(item)}
 					</p>
-					<p>{}</p>
 				</Modal.Body>
-				<Modal.Footer>
-					{' '}
-					<button onClick={() => addItemToCart(item)}>
+				<Modal.Footer style={{ justifyContent: 'center' }}>
+					<button
+						onClick={() => addItemToCart(item)}
+						className="product-card-button"
+					>
 						Adicionar ao carrinho
-					</button>{' '}
+					</button>
 				</Modal.Footer>
 			</Modal>
 		</>

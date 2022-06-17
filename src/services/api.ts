@@ -27,3 +27,7 @@ export async function getProductsFromCategoryAndQuery(categoryId:string, query:s
     return error;
   }
 }
+
+//debounce query
+//SCROLL INFINITO
+//REQUISIÇÕES

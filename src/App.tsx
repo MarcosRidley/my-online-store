@@ -6,11 +6,12 @@ import Cart from "./pages/Cart/Cart"
 import * as api from './services/api';
 import {Category} from './interfaces'
 import './App.css';
+import useDebounce from "./hooks/useDebounce";
 
 function App(): JSX.Element {
 
   const [categories, setCategories] = useState<Category[] | undefined>()
-  const [itemFilterName, setItemFilterName] = useState('ronaldo')
+  const [itemFilterName, setItemFilterName] = useState('')
   const [items, setItems] = useState<any[]>([])
   const [currentCategoryFilter, setCurrentCategoryFilter] = useState('')
   const [cartItems, setCartItems] = useState<any[]>([])
@@ -26,32 +27,43 @@ function App(): JSX.Element {
 		setCartItems(newCartItems);
 	}
 
+	const debouncedItemFilterName = useDebounce(itemFilterName, 500)
 
   useEffect(() => {
-    if(!categories) api.getCategories().then((result) => setCategories(result));
-    api.getProductsFromCategoryAndQuery(currentCategoryFilter, itemFilterName).then((result) => setItems(result.results))
-  },[categories, currentCategoryFilter, itemFilterName]);
+		if (!categories)
+			api.getCategories().then((result) => setCategories(result));
+		api
+			.getProductsFromCategoryAndQuery(currentCategoryFilter, debouncedItemFilterName)
+			.then((result) => setItems(result.results));
+	}, [categories, currentCategoryFilter, debouncedItemFilterName]);
 
-const loadingText:string = 'Loading...'
 
   return (
 		<BrowserRouter>
 			<Header setItemFilterName={setItemFilterName} />
 			<Routes>
-					<Route
-						path="/"
-						element={
-							<Home
-								items={items}
-								addItemToCart={addItemToCart}
-								categories={categories}
-								setCurrentCategoryFilter={setCurrentCategoryFilter}
-							/>
-						}
-					/>
+				<Route
+					path="/"
+					element={
+						<Home
+							items={items}
+							addItemToCart={addItemToCart}
+							categories={categories}
+							currentCategoryFilter={currentCategoryFilter}
+							setCurrentCategoryFilter={setCurrentCategoryFilter}
+							itemFilterName={itemFilterName}
+						/>
+					}
+				/>
 				<Route
 					path="/cart"
-					element={<Cart cartItems={cartItems} addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart}/>}
+					element={
+						<Cart
+							cartItems={cartItems}
+							addItemToCart={addItemToCart}
+							removeItemFromCart={removeItemFromCart}
+						/>
+					}
 				/>
 			</Routes>
 		</BrowserRouter>

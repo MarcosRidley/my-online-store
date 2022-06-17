@@ -23,7 +23,7 @@ export default function Header({setItemFilterName}: HeaderProps): JSX.Element {
 				/>
 			</div>
 			<Link to={pathname === '/' ? '/cart' : '/'}>
-				<button>To {pathname === '/' ? 'cart' : 'home'}</button>
+				<button className="page-switch-btn">{pathname === '/' ? 'Carrinho' : 'Home'}</button>
 			</Link>
 		</header>
 	);

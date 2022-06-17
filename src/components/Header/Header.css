@@ -11,8 +11,18 @@ header, header div {
 header div {
   flex-direction: row;
 }
-#logo {
-}
 #promo {
   width: 30%
+}
+
+.page-switch-btn {
+  background-color: #3483fa;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  line-height: 48px;
+  text-align: center;
+  font-weight: 600;
+  padding: 0 24px;
+  border-radius: 6px;
 }

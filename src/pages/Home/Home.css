@@ -1,0 +1,29 @@
+.home {
+  display: flex;
+  background-color: #EDEDED;
+  width: 100%;
+  align-items: baseline;
+}
+
+.home-items {
+  display: flex;
+  overflow-y: scroll;
+  align-self: baseline;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  flex-basis: 100%;
+}
+
+#request-search-text {
+  background-color: #3483fa;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  line-height: 48px;
+  text-align: center;
+  font-weight: 600;
+  padding: 0 24px;
+  border-radius: 6px;
+  width: 100%;
+}

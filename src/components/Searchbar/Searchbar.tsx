@@ -11,10 +11,11 @@ export default function Searchbar({setItemFilterName }: SearchbarProps) {
 	const handleChange = (ev: React.SyntheticEvent): void => {
 		const target = ev.target as HTMLInputElement;
 		setInputText(target.value);
-	};
-	const handleSearch = ():void => {
 		setItemFilterName(inputText);
 	};
+	// const handleSearch = ():void => {
+	// 	setItemFilterName(inputText);
+	// };
 
 	return (
 		<div className="search-bar sbx-custom">
@@ -24,9 +25,9 @@ export default function Searchbar({setItemFilterName }: SearchbarProps) {
 				value={inputText}
 				onChange={handleChange}
 			/>
-			<button type="button" onClick={handleSearch}>
-				Lupinha
-			</button>
+			{/* <button type="button" onClick={handleSearch}>
+				🔍
+			</button> */}
 		</div>
 	);
 }

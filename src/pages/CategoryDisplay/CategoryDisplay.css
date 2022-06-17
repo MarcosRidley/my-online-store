@@ -1,0 +1,22 @@
+.category-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-category {
+  width: 15em;
+  padding: 0.5em;
+  margin: 0.1em;
+  border-radius: 8px;
+  background-color: #3483fa;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  line-height: 2em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-category:hover {
+background-color: #2355a1;
+}
