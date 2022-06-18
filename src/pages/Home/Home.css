@@ -7,7 +7,6 @@
 
 .home-items {
   display: flex;
-  overflow-y: scroll;
   align-self: baseline;
   flex-wrap: wrap;
   justify-content: space-evenly;
