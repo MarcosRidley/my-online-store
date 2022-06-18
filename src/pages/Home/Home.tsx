@@ -48,9 +48,9 @@ export default function Home({
 					mappedItems
 				) : (
 					<p id="request-search-text">
-						{itemFilterName === ''
+						{itemFilterName === '' 
 							? 'Use a barra de pesquisa ou selecione um filtro para visualizar nossos produtos!'
-							: `Nenhum item encontrado para o filtro ${itemFilterName} na categoria selecionada.`}
+							: `Nenhum item encontrado para os filtros selecionados.`}
 					</p>
 				)}
 			</div>
