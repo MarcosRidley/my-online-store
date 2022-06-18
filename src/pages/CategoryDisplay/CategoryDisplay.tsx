@@ -21,7 +21,7 @@ export default function CategoryDisplay({
 				onClick={() => setCurrentCategoryFilter(category.id)}
 				style={
 					category.id === currentCategoryFilter
-						? { backgroundColor: 'red' }
+						? { backgroundColor: 'rgb(200, 70, 70)' }
 						: undefined
 				}
 			>

@@ -11,6 +11,7 @@ interface HomeProps {
 	setCurrentCategoryFilter: Function;
 	currentCategoryFilter: String;
 	itemFilterName: String;
+	cartItems: any[];
 }
 
 export default function Home({
@@ -20,6 +21,7 @@ export default function Home({
 	setCurrentCategoryFilter,
 	currentCategoryFilter,
 	itemFilterName,
+	cartItems,
 }: HomeProps): JSX.Element {
 	const mappedItems = items.map((item) => (
 		<ProductCard
@@ -28,6 +30,7 @@ export default function Home({
 			addItemToCart={addItemToCart}
 			isCart={false}
 			removeItemFromCart={(): void => {}}
+			cartItems={cartItems}
 		/>
 	));
 
@@ -44,8 +47,10 @@ export default function Home({
 				{mappedItems.length > 0 ? (
 					mappedItems
 				) : (
-					<p id='request-search-text'>
-						{itemFilterName === '' ? 'Use a barra de pesquisa ou selecione um filtro para visualizar nossos produtos!' : `Nenhum item encontrado para o filtro ${itemFilterName} na categoria selecionada.`}
+					<p id="request-search-text">
+						{itemFilterName === ''
+							? 'Use a barra de pesquisa ou selecione um filtro para visualizar nossos produtos!'
+							: `Nenhum item encontrado para o filtro ${itemFilterName} na categoria selecionada.`}
 					</p>
 				)}
 			</div>

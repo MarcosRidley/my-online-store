@@ -52,6 +52,7 @@ function App(): JSX.Element {
 							currentCategoryFilter={currentCategoryFilter}
 							setCurrentCategoryFilter={setCurrentCategoryFilter}
 							itemFilterName={itemFilterName}
+							cartItems={cartItems}
 						/>
 					}
 				/>

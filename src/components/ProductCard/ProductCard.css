@@ -9,13 +9,14 @@
   background-color: #FFF;
   border-radius: 8px;
   margin: 5px;
-  box-shadow:2px 4px #CCC;
+  box-shadow: 0px 0px 4px 3px #CCC;
 }
 
 
 .product-card-title {
   width: 150px;
   height: 60px;
+  overflow: unset;
 
 }
 .product-card-image {
@@ -35,6 +36,16 @@
   font-size: 1em;
   margin: 0.5em;
   padding: 0.5em;
+}
+
+.cart-management-btns {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.plus, .minus {
+  width: 2em;
 }
 
 .close-btn {

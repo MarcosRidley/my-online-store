@@ -5,12 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface ProductCardModalProps {
 	item: any;
+	cartItems:any[];
 	addItemToCart: Function;
 }
 
 export default function ProductCardModal({
 	item,
 	addItemToCart,
+	cartItems,
 }: ProductCardModalProps): JSX.Element {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,15 +24,20 @@ export default function ProductCardModal({
 		setIsModalOpen(false);
 	};
 
-	const hasInstallmentPlan = (item:any):String => {
-		if('installments' in item) {
-			if(item.installments !== null) {
-				let returnString = `${item.installments.quantity} vezes de ${BRLformatter(item.installments.amount)}`;
-				const complementaryString = item.installments.rate === 0 ? ", sem juros!" : "."
-				return returnString + complementaryString
+	const hasInstallmentPlan = (item: any): String => {
+		if ('installments' in item) {
+			if (item.installments !== null) {
+				let returnString = `${
+					item.installments.quantity
+				} vezes de ${BRLformatter(item.installments.amount)}`;
+				const complementaryString =
+					item.installments.rate === 0 ? ', sem juros!' : '.';
+				return returnString + complementaryString;
 			}
-		} return ""
-	}
+		}
+		return '';
+	};
+
 	return (
 		<>
 			<button onClick={showModal} className="product-card-button">
@@ -64,12 +71,15 @@ export default function ProductCardModal({
 					</p>
 				</Modal.Body>
 				<Modal.Footer style={{ justifyContent: 'center' }}>
-					<button
-						onClick={() => addItemToCart(item)}
-						className="product-card-button"
-					>
-						Adicionar ao carrinho
-					</button>
+					<div>
+						<button
+							onClick={() => addItemToCart(item)}
+							className="product-card-button"
+						>
+							Adicionar ao carrinho
+						</button>
+						<>No carrinho: {cartItems.filter(cartItem => cartItem === item).length}</>
+					</div>
 				</Modal.Footer>
 			</Modal>
 		</>
